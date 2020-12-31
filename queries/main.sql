@@ -6,13 +6,14 @@
 --	   5			[12,13,14] --> 7	,   [15,16] --> 8		,  [17-23] --> 9	,   [24,38] --> 10
 --	   6			[39,40] --> 11		,	[41,42] --> 12		
 --	 
+--BACKUP DATABASE sputekDB TO DISK='D:\sputekDatabase.bak'
 use SputekDB
-DBCC CHECKIDENT ('Order_Company', RESEED, 1)  
-DBCC CHECKIDENT ('Order_Customer', RESEED, 1)  -- reseed order ids
+DBCC CHECKIDENT ('Order_Company', RESEED, 0)  
+DBCC CHECKIDENT ('Order_Customer', RESEED, 0)  -- reseed order ids
 
 -- TRIGGERS
--- TrgOrderProduct -> When a customer order inserted in 'Order_Customer' table , update product count in 'Product_Storage' wirh count-=ordercount
--- TrgOrderModel -> When material order inserted in 'Order_Company' table , update model count in 'Model_Storage' with count+=ordercount 
+-- TrgOrderProduct -> When a customer order inserted in 'Order_Customer' table , update product count in 'Product_Storage' wirh count-=ordercount and create bill inside
+-- TrgOrderModel -> When material order inserted in 'Order_Company' table , update model count in 'Model_Storage' with count+=ordercount and create bill inside
 -- TrgInsertProduct ->  When a product inserted in 'Product' table , create row with this productId and count=0
 -- TrgInsertModel -> When a new model added in 'Model' table , create row for this model in 'Model_Storage' table with count=0 
 
@@ -32,6 +33,22 @@ exec ProcedureGiveOrderProduct @Ssn=39970214094 , @productId=2 , @count=1
 -- look all products and counts company have
 exec ProcedureAllProductAndCounts		
 -- look all order details of customers , who gave order , how many , which product and when 
-exec ProcedureGetAllProductOrders			 
+exec ProcedureGetAllProductOrders	
+-- updating price of the model
+exec ProcedureUpdatePrice @modelId=1 , @price=0
+-- updating price of the product 
+exec ProcedureUpdatePriceProduct @productId=1 , @price=1
 
-
+-- VIEWS
+-- view for existing products in storage
+SELECT * FROM [Existing Products In Storage]	
+-- view for finished materials in storage
+SELECT * FROM [Finished Materials And Models In Storage]
+-- view for bills of all customers
+SELECT * FROM [All bills]
+-- view for bills which has total price over than avg totalprice for customers
+SELECT * FROM [Bills with higher price]
+-- view for bills of all employees
+SELECT * FROM [All Company Bills]
+-- view for bills which has total price over than avg totalprice for employees
+SELECT * FROM [Bills with higher price Company]
