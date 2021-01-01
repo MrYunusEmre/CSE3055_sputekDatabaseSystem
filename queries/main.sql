@@ -18,26 +18,26 @@ DBCC CHECKIDENT ('Order_Customer', RESEED, 0)  -- reseed order ids
 -- TrgInsertModel -> When a new model added in 'Model' table , create row for this model in 'Model_Storage' table with count=0 
 
 -- PROCEDURES
--- give random order or give this informations with parameter
+-- 7     give random order or give this informations with parameter
 exec ProcedureGiveRandomOrderMaterial		 
--- give material orders with this procedure parameters
+-- 5     give material orders with this procedure parameters
 exec ProcedureGiveOrderMaterial @Ssn=19115325844 , @materialId=1 , @modelId=1 , @companyId=1 , @count=2	
--- look all materials and model counts company has
+-- 1     look all materials and model counts company has
 exec ProcedureAllMaterialAndModelCounts		 
- -- look all order details , who gave order, how many , when , which material and model from which company
+-- 3     look all order details , who gave order, how many , when , which material and model from which company
 exec ProcedureGetAllMaterialOrders			
---  give random order or give this informations with parameter
+-- 8     give random order or give this informations with parameter
 exec ProcedureGiveRandomOrderProduct		 
--- give product order with customer ssn and product id with count
+-- 6     give product order with customer ssn and product id with count
 exec ProcedureGiveOrderProduct @Ssn=39970214094 , @productId=2 , @count=1	
--- look all products and counts company have
+-- 2     look all products and counts company have
 exec ProcedureAllProductAndCounts		
--- look all order details of customers , who gave order , how many , which product and when 
+-- 4     look all order details of customers , who gave order , how many , which product and when 
 exec ProcedureGetAllProductOrders	
--- updating price of the model
-exec ProcedureUpdatePrice @modelId=1 , @price=0
--- updating price of the product 
-exec ProcedureUpdatePriceProduct @productId=1 , @price=1
+-- 9     updating price of the model
+exec ProcedureUpdatePrice @modelId=1 , @price=100
+-- 10    updating price of the product 
+exec ProcedureUpdatePriceProduct @productId=1 , @price=100
 
 -- VIEWS
 -- view for existing products in storage
