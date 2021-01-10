@@ -38,6 +38,8 @@ exec ProcedureGetAllProductOrders
 exec ProcedureUpdatePrice @modelId=1 , @price=100
 -- 10    updating price of the product 
 exec ProcedureUpdatePriceProduct @productId=1 , @price=100
+-- 11 updating product storage
+exec ProcedureUpdatingProductStorage @Ssn=11111111111 , @productId=1 , @count=8
 
 -- VIEWS
 -- view for existing products in storage
