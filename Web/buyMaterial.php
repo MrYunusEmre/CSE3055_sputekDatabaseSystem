@@ -13,7 +13,7 @@
 
 <?php
 
-  $serverName = "DESKTOP-70KJCOM";
+  $serverName = "DESKTOP-GIRCR1I";
   $connectionInfo = array( "Database"=>"sputekDB","CharacterSet" => "UTF-8");
 
   $conn = sqlsrv_connect($serverName , $connectionInfo);

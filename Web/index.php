@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr-TR">
 <head>
-	<title>Login V3</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -30,7 +30,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('images/spBackground.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="loginCheck.php" method="post">
 					<span class="login100-form-logo">
@@ -38,7 +38,7 @@
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Log ın
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username" >
@@ -63,14 +63,20 @@
 							Login
 						</button>
 					</div>
-
-
-					<div class="text-center p-t-90">
-						<a class="txt1" href="#">
-							Forgot Password?
-						</a>
-					</div>
 				</form>
+
+				<form action="signUp.php">
+					<div class="text-center p-t-90">
+						<button class="">
+							Sign Up
+						</button>
+					</div>
+
+				</form>
+
+
+
+
 			</div>
 		</div>
 	</div>
