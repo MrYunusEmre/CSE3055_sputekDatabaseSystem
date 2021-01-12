@@ -1,1 +1,0 @@
-BACKUP DATABASE SputekDB TO DISK='D:\sputek.bak'
